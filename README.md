@@ -1,3 +1,9 @@
+# Menshevik Kyojin MMAI 19
+
+This is the strategy I developed with @Nadogan to compete at MMA19. Basically we just spam a bunch of builder Beavers and have them go to the nearest tree and harvest it. The beavers do not stand on their own lodges. 
+
+For more info on MMAI check out the @siggame organization on github and their repo Cadre to run this or other games. 
+
 # Stumped Python 3 Client
 
 This is the root of you AI. Stay out of the `joueur/` folder, it does most of the heavy lifting to play on our game servers. Your AI, and the game objects it manipulates are all in `games/stumped/`, with your very own AI living in `games/stumped/ai.py` for you to make smarter.
