@@ -1,0 +1,65 @@
+spawn_logic
+	for each of your lodges:
+		if number of beavers is less than or equal to 5:
+			spawn a builder beaver
+		if number of beavers is less than or equal to 8:
+			spawn a hungry beaver
+		if number of beavers is less than or equal to 10:
+			spawn a fighter beaver
+			
+		if the number of beavers is > 10:
+			if you have at least 6 food:
+				if you have less than 4 builder beavers:
+					spawn a builder beaver
+			if you have at least 8 food:
+				if you have less than 4 hungry beavers:
+					spawn a hungry beaver
+			if you have at least 12 food:
+				spawn a fighter beaver
+		
+
+beaver_act
+	for each of your beavers:
+		if your beaver is standing on a lodge:
+			get off the lodge
+			
+		if beaver has actions left:
+			if your beaver + its tile has adequate wood to construct a lodge:
+				if your beaver has moves left:
+					if your beaver isn't adjacent to a type of resource:
+						move its full move action toward that resource
+					construct the lodge
+					
+			if your beaver is a builder beaver:
+				if your beaver is not adjacent to a source of wood:
+					resource_path toward that wood with all move actions
+					
+				if your beaver is currently at carrying capacity:
+					if your beaver is adjacent to a source of wood:
+						if your beaver is currently standing on water:
+							move off the water
+						drop the wood it's carrying on its current square
+						
+				if your beaver is adjacent to a source of wood:
+					chop as much wood as possible
+					
+			if your beaver is a hungry beaver:
+				if your beaver is at carrying capacity:
+					resource_path toward the the nearest friendly lodge with all move actions
+					if your beaver is adjacent to the lodge:
+						 drop the food on the lodge's tile
+				
+				if your beaver is not adjacent to a source of food:
+					resource_path toward that food with all move actions
+				
+				if your beaver is adjacent to a source of food:
+					munch as much food as possible
+						
+			if your beaver is a fighter:
+				if your beaver is adjacent to an enemy beaver:
+					ATTACK
+				try to resource_path toward the nearest enemy lodge
+				
+
+resource_path(start point, type of resource)
+	use BFS to identify the shortest path toward a specified type of resource
